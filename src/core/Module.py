@@ -1,0 +1,1 @@
+import abcclass Module:    @abc.abstractmethod    def getRoutes(self):        pass    @abc.abstractmethod    def getControllersPath(self):        pass    @abc.abstractmethod    def getDependencies(self):        pass

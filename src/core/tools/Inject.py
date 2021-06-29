@@ -1,0 +1,1 @@
+from functools import wrapsfrom flask import requestclass Inject:    @classmethod    def body(cls, fun):        @wraps(fun)        def wrapper(*args):            return fun(*args,**{ **request.files, **request.values })        return wrapper

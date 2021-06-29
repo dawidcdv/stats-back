@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: statistics-image
+    depends_on:
+      - postgres
+#    command: /bin/sh -c "alembic -c statistics/alembic.ini upgrade head && flask run --host=0.0.0.0 --port=80"
+    environment:
+      - DB_HOST=postgres
+      - DB_PASSWORD=not_secure_passw0rd
+      - API_HOST=api
+      - FLASK_APP=flask_app.py
+      - FLASK_DEBUG=1
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./src:/app/src
+      - ./uploads:/uploads
+      - ./tests:/app/tests
+#    entrypoint: /entrypoint.sh
+    ports:
+      - "5005:80"
+
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=statistics
+      - POSTGRES_PASSWORD=not_secure_passw0rd
+    ports:
+      - "5432:5432"

@@ -1,0 +1,16 @@
+# app
+sqlalchemy
+pandas
+flask
+psycopg2-binary
+flask_cors
+pika
+werkzeug
+alembic 
+# tests
+pytest
+pytest-icdiff
+mypy
+requests
+matplotlib
+

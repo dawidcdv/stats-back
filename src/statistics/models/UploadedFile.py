@@ -1,0 +1,1 @@
+class UploadedFile:    def __init__(self, name : str, size : int, row : int, column : int, checksum : str,  id :  int = None):        self.id = id        self.checksum = checksum        self.name = name        self.size = size        self.row = row        self.column = column
