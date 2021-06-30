@@ -1,8 +1,6 @@
 #!/bin/sh
 
-sed -i "s/sqlalchemy\.url.*/sqlalchemy.url = postgresql:\/\/statistics:$DB_PASSWORD@$DB_HOST:5432\/statistics/" statistics/alembic.ini
-echo $(pwd)
-echo $(ls)
+sed -i "s/sqlalchemy\.url.*/sqlalchemy.url = postgresql:\/\/statistics:$DB_PASSWORD@$DB_HOST:5432\/statistics/" statistics/config/alembic.ini
 
 echo Waiting for postgresql  $DB_HOST:5432 ...
 elapsed=0
@@ -18,7 +16,7 @@ do
     sleep 1;
 done
 
-echo "POSTGRES READY ! - M"
+echo "POSTGRES READY !"
 
 cd statistics/config
 alembic -c alembic.ini upgrade head
